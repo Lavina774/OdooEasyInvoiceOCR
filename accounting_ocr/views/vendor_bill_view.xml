@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend Vendor Bill Form View -->
+    <record id="view_vendor_bill_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.ocr</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="ref"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action to Link OCR Invoices to Vendor Bills -->
+    <record id="action_vendor_bill_ocr" model="ir.actions.server">
+        <field name="name">Auto-Fill Vendor Bill</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+            model.create_from_ocr(env['invoice.ocr'].search([('is_processed', '=', True)], limit=1))
+        </field>
+    </record>
+
+    <!-- Button to Trigger Auto-Fill -->
+    <record id="button_vendor_bill_ocr" model="ir.ui.view">
+        <field name="name">account.move.form.ocr.button</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="auto_fill_from_ocr" type="object" string="Auto-Fill from OCR" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

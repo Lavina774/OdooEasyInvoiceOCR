@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_invoice_ocr,access_invoice_ocr,model_invoice_ocr,base.group_user,1,1,1,1
+access_ocr_engine,access_ocr_engine,model_ocr_engine,base.group_user,1,1,1,1
+access_invoice_parser,access_ocr_engine,model_invoice_parser,base.group_user,1,1,1,1

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View for OCR Invoices -->
+    <record id="view_invoice_ocr_form" model="ir.ui.view">
+        <field name="name">invoice.ocr.form</field>
+        <field name="model">invoice.ocr</field>
+        <field name="arch" type="xml">
+            <form string="OCR Invoice">
+                <header>
+                    <button name="do_close" type="object" string="Close" class="oe-highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="invoice_file"/>
+                        <field name="file_type"/>
+                        <field name="extracted_text" widget="text" placeholder="No extracted text available yet."/>
+                        <field name="is_processed"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree/List View for OCR Invoices -->
+    <record id="view_invoice_ocr_tree" model="ir.ui.view">
+        <field name="name">invoice.ocr.tree</field>
+        <field name="model">invoice.ocr</field>
+        <field name="arch" type="xml">
+            <tree string="OCR Invoices">
+                <field name="name"/>
+                <field name="file_type"/>
+                <field name="is_processed"/>
+                <field name="extracted_text"/> 
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action to Open the Invoice OCR Menu -->
+    <record id="action_invoice_ocr" model="ir.actions.act_window">
+        <field name="name">OCR Invoices</field>
+        <field name="res_model">invoice.ocr</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Upload an invoice to start processing with OCR.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item for Invoice OCR -->
+    <menuitem id="menu_invoice_ocr_root" name="Invoice OCR" sequence="10"/>
+    <menuitem id="menu_invoice_ocr" name="Invoices" parent="menu_invoice_ocr_root" action="action_invoice_ocr"/>
+</odoo>
+
