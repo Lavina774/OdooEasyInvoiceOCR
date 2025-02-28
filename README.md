@@ -32,6 +32,11 @@ This project is being developed by the **Diverse Bytes** team for **FOSS FEST 20
 ### 🔧 How to Run (coming soon)  
 Once the project reaches a usable phase, we will provide a detailed installation and execution guide.  
 
+## 🎥 Demo Video  
+[![OdooEasyInvoiceOCR Demo](https://img.youtube.com/vi/j2nwpWRL8fU/0.jpg)](https://youtu.be/j2nwpWRL8fU)
+
+
+
 ### 🤝 How to Contribute  
 If you want to help with development, follow these steps:  
 1️⃣ Fork the repository.  
